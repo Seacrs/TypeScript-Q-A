@@ -13,7 +13,7 @@ names.forEach(greet);
 
 ### Solution
 
-```bash
+```TypeScript
 function greet(name: string): string{
     return "Hello " + name.toUpperCase();
 }
@@ -34,7 +34,7 @@ console.log(scores.reduce((a, b) => a + b));
 ```
 ### Solution
 
-```bash
+```TypeScript
 const scores: number[] = [95, "100", 87].map(Number);
 scores.push(82);
 console.log(scores.reduce((a, b) => a + b));
@@ -49,7 +49,7 @@ function printUser(user) {
 printUser({ name: "Sara", age: "25" });
 ```
 ### Solution
-```bash
+```TypeScript
 type User={
     name: string
     age: string
@@ -74,7 +74,7 @@ getLength(123);
 getLength("abc");
 ```
 ### Solution
-```bash
+```TypeScript
 type ID = string | number;
 
 function getLength(id: ID) {
@@ -99,7 +99,7 @@ function getCurrentUser(): User {
 }
 ```
 ### Solution
-```bash
+```TypeScript
 type User = {
     id: number;
     name: string;
@@ -125,7 +125,7 @@ function greet(user: User) {
 }
 ```
 ### Solution
-```bash
+```TypeScript
 type Admin = { role: "admin"; permissions: string[] };
 type Guest = { role: "guest"; sessionId: string };
 type User = Admin | Guest;
@@ -147,7 +147,7 @@ function evaluateScore(score: number): Result {
 }
 ```
 ### Solution
-```bash
+```TypeScript
 type Result = "pending" | "approved" | "rejected";
 
 function evaluateScore(score: number): Result {
@@ -167,8 +167,17 @@ function logLength(value: Value) {
 }
 ```
 ### Solution
-```bash
+```TypeScript
+type Value = string | null | undefined;
 
+function logLength(value: Value) {
+  if (typeof value === 'string') {
+    console.log(value.length);
+  }
+  else console.log(`Value must be a valid string`)
+}
+
+logLength(null)
 ```
 ## 9
 ```
@@ -181,7 +190,7 @@ async function fetchData(id: number): Promise<ApiResponse> {
 }
 ```
 ### Solution
-```bash
+```TypeScript
 type ApiResponse = { success: true; data: string } | { success: false; error: string };
 
 async function fetchData(id: number): Promise<ApiResponse> {
@@ -224,6 +233,42 @@ profiles.forEach(p => {
 });
 ```
 ### Solution
-```bash
+```TypeScript
+type Profile = {
+  name: string;
+  settings?: {
+    theme: "dark" | "light";
+    notifications: boolean;
+  };
+};
 
+const profiles: Profile[] = [
+  { name: "Bob" },
+  { name: "Carla", settings: { theme: "dark", notifications: true } }
+];
+
+profiles.forEach(p => {
+  console.log(p.settings?.theme.toUpperCase() ?? "DEFAULT");
+});
+```
+## 11
+```
+type Action = 
+  | { type: "ADD_TODO"; text: string }
+  | { type: "TOGGLE_TODO"; id: number }
+  | { type: "DELETE_TODO"; id: number };
+
+const action = { type: "ADD_TODO", text: 123 } as Action; 
+dispatch(action); 
+```
+### solution
+```TypeScript
+type Action = 
+    | { type: "ADD_TODO"; text: string }
+    | { type: "TOGGLE_TODO"; id: number }
+    | { type: "DELETE_TODO"; id: number };
+
+const action: Action = { type: "ADD_TODO", text: "123" };
+
+dispatch(action); 
 ```
