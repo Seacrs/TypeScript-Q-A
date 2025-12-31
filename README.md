@@ -1,2 +1,8 @@
-#       TypeScript Exercises
-TypeScript Questions and answers done during these 4 weeks
+# TypeScript Practical Questions & Answers
+
+This repository contains practical TypeScript questions.
+All questions are stored separately from their answers.
+
+## Structure
+- `Practical/` – Questions only
+- `answers/solutions.md` – Answers in the same order as the questions
