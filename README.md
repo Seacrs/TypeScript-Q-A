@@ -6,3 +6,5 @@ All questions are stored separately from their answers.
 ## Structure
 - `Practical/` – Questions only
 - `answers/solutions.md` – Answers in the same order as the questions
+
+❗ **Important:**Question numbers are global, not per file.
